@@ -1,0 +1,23 @@
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>>res=new ArrayList<>();
+        List<Integer>com=new ArrayList<>();
+        backtrack(res,com,nums);
+        return res;
+    }
+    public void backtrack(List<List<Integer>>res,List<Integer>com,int nums[]){
+        if(com.size()==nums.length){
+            res.add(new ArrayList<>(com));
+            return;
+        }
+             for(int x:nums){
+                if(com.contains(x)){
+                    continue;
+                }
+                com.add(x);
+                backtrack(res,com,nums);
+                com.remove(com.size()-1);
+             }
+        
+    }
+}
